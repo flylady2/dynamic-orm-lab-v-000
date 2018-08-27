@@ -54,21 +54,12 @@ class InteractiveRecord
   end
 
   def self.find_by(hash)
-    results = []#binding.pry
+    results = []
     hash.each do |property, value|
-      #binding.pry
-      #self.send("{property}=", value)
-      #binding.pry
-
-    #binding.pry
       sql = "SELECT * FROM #{self.table_name} WHERE  #{property} = '#{value}'"
-
       results << DB[:conn].execute(sql)
-      #binding.pry
     end
     results.flatten
-    #binding.pry
-
   end
 
 end
